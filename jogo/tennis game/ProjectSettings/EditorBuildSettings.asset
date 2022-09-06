@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/sceneInicial.unity
+    guid: 3828b9a7b176a3b0ca71b653a954df3e
+  - enabled: 1
+    path: Assets/Scenes/sceneLoginFisioterapeuta.unity
+    guid: 93140ea30161797a8b021de5703086fe
+  - enabled: 1
+    path: Assets/Scenes/sceneCadastroFisioterapeuta.unity
+    guid: 3a7c450978cffe1b4b0ab6652c2a8855
+  - enabled: 1
+    path: Assets/Scenes/sceneLoginPaciente.unity
+    guid: 20768039bef583f55bdb8b5d43c338a2
+  - enabled: 1
+    path: Assets/Scenes/sceneCadastroPaciente.unity
+    guid: e3e28896c0cdece16856a26a3b97e4f2
+  - enabled: 1
+    path: Assets/Scenes/sceneColetaDadosFisicos.unity
+    guid: 06c418ad56671d067a8e57474b1829e2
+  - enabled: 1
+    path: Assets/Scenes/sceneCalibragem.unity
+    guid: b7bd9ea0326f8f1fc994a2f6067ff41f
+  - enabled: 1
+    path: Assets/Scenes/sceneConfigPartida.unity
+    guid: e935e1fbb42734935a72e438155dfde6
+  - enabled: 1
+    path: Assets/Scenes/sceneDemo.unity
+    guid: 683939bbfeec0db58866fd3e04f15d56
+  - enabled: 1
+    path: Assets/Scenes/sceneJogo.unity
+    guid: c504594d280de67339385f81af1e28cf
+  - enabled: 1
+    path: Assets/Scenes/sceneProximaAcao.unity
+    guid: f97eed60719ae3129b2bfff27a1748ab
+  - enabled: 1
+    path: Assets/Scenes/sceneHistorico.unity
+    guid: 6e54c3beedd3a739bb715b09831a22cd
+  - enabled: 1
+    path: Assets/Scenes/sceneSelecionaSessoes.unity
+    guid: cfc7e8f0e596f7c399c7e09ad4112ba2
+  - enabled: 1
+    path: Assets/Scenes/sceneGraficos.unity
+    guid: cb03bbb7aa4bf3215992f08e08013b6a
+  - enabled: 1
+    path: Assets/Scenes/sceneGraficoDesempenho.unity
+    guid: 9f61c2fa026affb3890c64db51c80eed
+  - enabled: 1
+    path: Assets/Scenes/sceneFimPartida.unity
+    guid: aa84834bf727ba6aabd50da4a5da25f1
+  - enabled: 1
+    path: Assets/Scenes/sceneAcessoHistSair.unity
+    guid: 893034f7ae0e5aeb3ae61552ed112c63
+  m_configObjects: {}
