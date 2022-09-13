@@ -442,6 +442,7 @@ Adalberto
 0
 0
 $
+<<<<<<< HEAD
 13/09/2022 16:29:30
 Andrelise
 Adalberto
@@ -464,6 +465,9 @@ Teste
 0
 $
 13/09/2022 16:56:46
+=======
+13/09/2022 16:58:35
+>>>>>>> 73993dbd3ff47ea881a52c74e33da4279a07cea0
 Andrelise
 Teste
 0
