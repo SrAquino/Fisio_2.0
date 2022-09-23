@@ -11,7 +11,7 @@ char buf[BUFFER_SIZE];
 void setup() {
   //Seta porta serial de comunicação
   Serial.begin(115200);
-  Serial2.begin(115200); //TX2, RX2 
+  Serial2.begin(9600); //TX2, RX2 
   Serial.flush();
   Serial2.flush();
   //led apenas para testes de recebimento/envio de dados
@@ -26,8 +26,8 @@ void loop() {
     String leituraBuffer = Serial2.readStringUntil('\n');
     int tamanhoString = leituraBuffer.length();
 
-    Serial.print("Tamanho: ");
-    Serial.println(tamanhoString);
+    //Serial.print("Leitura: ");
+    //Serial.println(leituraBuffer);
 
     if(tamanhoString == 2){
       if(leituraBuffer == "3\r"){
@@ -52,8 +52,8 @@ void loop() {
     //valor recebido da unity    
     int valorRecebidoUnity = Serial.read();
 
-    Serial.print("Recebido da Unity: ");
-    Serial.println(valorRecebidoUnity);
+    //Serial.print("Recebido da Unity: ");
+    //Serial.println(valorRecebidoUnity);
  
     if(valorRecebidoUnity == '0'){ //calibragem direita
       Serial2.write("0");

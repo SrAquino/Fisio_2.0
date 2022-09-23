@@ -36,11 +36,15 @@ public class configCalibragem : MonoBehaviour
     void Start()
     {
         string [] portasDisponiveis = SerialPort.GetPortNames(); //coleta porta serial disponivel
-        //Debug.Log(portasDisponiveis[0]); //seleciona a primeira que é a que está conectado c/ comun serial c/ arduino
+        Debug.Log(portasDisponiveis[1]); //seleciona a primeira que é a que está conectado c/ comun serial c/ arduino
         //Cria porta e abre 
         //porta = new SerialPort("/dev/ttyACM1", 115200);
-        porta = new SerialPort(portasDisponiveis[0], 115200);
+        porta = new SerialPort(portasDisponiveis[1], 115200);
+        Debug.Log("Abrir porta..");
         porta.Open();
+        Debug.Log("Porta aberta!");
+
+
         porta.ReadTimeout = -1; //InfiniteTimeout = -1
         posicaoCalibragem = -1; //inicializa flag para detectar extremo de calibragem
     }
@@ -48,9 +52,9 @@ public class configCalibragem : MonoBehaviour
     void Update()
     {
         if(indicaCalib == 1){
-            // Debug.Log("Posição x: " + iconeIndicativoDireita.transform.position.x );
-            // Debug.Log("Posição y: " + iconeIndicativoDireita.transform.position.y );
-            // Debug.Log("Posição z: " + iconeIndicativoDireita.transform.position.z );
+            Debug.Log("Posição x: " + iconeIndicativoDireita.transform.position.x );
+            Debug.Log("Posição y: " + iconeIndicativoDireita.transform.position.y );
+            Debug.Log("Posição z: " + iconeIndicativoDireita.transform.position.z );
             if(iconeIndicativoDireita.transform.position.x >= 65f){
                 iconeIndicativoDireita.transform.position = new Vector3(65f, -21.85f, 90f);
             }else{

@@ -196,7 +196,7 @@ class _AceleroPage extends State<AceleroPage> {
 
   //recebe dados via bluetooth
   void _onDataReceived(Uint8List data) {
-    // print("Recebendo uma mensagem do módulo!");
+    print("Recebendo uma mensagem do módulo!");
 
     String entrada = new String.fromCharCodes(data);
 
@@ -229,9 +229,9 @@ class _AceleroPage extends State<AceleroPage> {
 
   //envia dados via bluetooth
   void _sendMessage(String saida) async {
-    // print("Enviando uma mensagem ao módulo!");
+    print("Enviando uma mensagem ao módulo!");
     saida = saida.trim();
-    // print(utf8.encode(saida + "\r\n"));
+    print(utf8.encode(saida + "\r\n"));
     connection.output.add(utf8.encode(saida + "\r\n"));
   }
 
