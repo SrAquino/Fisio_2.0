@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sensors_plus/sensors_plus.dart';
-import 'dart:typed_data';
+//import 'dart:typed_data';
 import 'dart:async';
-import 'dart:convert';
-import 'dart:math';
+//import 'dart:convert';
+//import 'dart:math';
 
 class Calibragem extends StatefulWidget {
   @override

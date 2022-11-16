@@ -1,4 +1,4 @@
-import 'package:coletadados_tennis/testeCalibragem.dart';
+//import 'package:coletadados_tennis/testeCalibragem.dart';
 import 'package:flutter/material.dart';
 import 'package:coletadados_tennis/selecionaModulo.dart';
 
@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //);
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF4D7DB4),
+                  backgroundColor: Color(0xFF4D7DB4),
                   textStyle: TextStyle(fontWeight: FontWeight.w600),
                 ),
               )),
@@ -79,14 +79,14 @@ class _MyHomePageState extends State<MyHomePage> {
             alignment: Alignment.center,
             padding: const EdgeInsets.fromLTRB(
                 0, 30, 0, 0), //left, top, right, bottom)
-            child: SizedBox( 
+            child: SizedBox(
               width: 150,
               height: 45,
               child: (ElevatedButton(
                 child: Text("SAIR"),
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF4D7DB4),
+                  backgroundColor: Color(0xFF4D7DB4),
                   textStyle: TextStyle(fontWeight: FontWeight.w600),
                 ),
               )),

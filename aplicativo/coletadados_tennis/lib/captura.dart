@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:math';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
@@ -87,7 +86,7 @@ class _AceleroPage extends State<AceleroPage> {
                   : Text('Log com ' + widget.server.name))),
       body: SafeArea(
         child: Column(
-          children: [ 
+          children: [
             // Container(
             //     alignment: Alignment.center,
             //     padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
@@ -158,13 +157,13 @@ class _AceleroPage extends State<AceleroPage> {
               alignment: Alignment.center,
               padding: const EdgeInsets.fromLTRB(0, 100, 0, 0), //l, t, r, b
               child: Icon(
-                _acao == 1 
-                ? Icons.build_circle_outlined 
-                : _acao == 2
-                  ? Icons.compare_arrows
-                  : _acao == 3
-                    ? Icons.done_all
-                    : Icons.loop_outlined,
+                _acao == 1
+                    ? Icons.build_circle_outlined
+                    : _acao == 2
+                        ? Icons.compare_arrows
+                        : _acao == 3
+                            ? Icons.done_all
+                            : Icons.loop_outlined,
                 color: Color(0xFF2E5889),
                 size: 280,
               ),
@@ -173,13 +172,13 @@ class _AceleroPage extends State<AceleroPage> {
               alignment: Alignment.center,
               padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
               child: Text(
-                _acao == 1 
-                ? "REALIZANDO CALIBRAGEM | DIREITA = $_calibragemDir ESQUERDA = $_calibragemEsq"
-                : _acao == 2
-                  ? "CAPTURANDO MOVIMENTO: $_direcao"
-                  : _acao == 3
-                    ? "CONEXÃO ESTABELECIDA"
-                    : "AGUARDANDO CONEXÃO",
+                _acao == 1
+                    ? "REALIZANDO CALIBRAGEM | DIREITA = $_calibragemDir ESQUERDA = $_calibragemEsq"
+                    : _acao == 2
+                        ? "CAPTURANDO MOVIMENTO: $_direcao"
+                        : _acao == 3
+                            ? "CONEXÃO ESTABELECIDA"
+                            : "AGUARDANDO CONEXÃO",
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
@@ -210,17 +209,17 @@ class _AceleroPage extends State<AceleroPage> {
       if (dadosBluetooth == 0 || dadosBluetooth == 1) {
         //calibragem
         // print("Calibragem");
-        _sendMessage("6");//emite aviso de inicio da calibragem para o jogo
+        _sendMessage("6"); //emite aviso de inicio da calibragem para o jogo
         calibragemGiroscopio(dadosBluetooth);
         _acao = 1; //realizando calibragem
-      }else if(dadosBluetooth == 2){
+      } else if (dadosBluetooth == 2) {
         //movimento
         // print("Movimento");
         movimentoAvatarGiroscopio();
         //_sendMessage("Capturando");
         _acao = 2; //capturando movimento
-      }else if (dadosBluetooth == 4) {
-        //conexão estabelecida ok 
+      } else if (dadosBluetooth == 4) {
+        //conexão estabelecida ok
         // print("Conexão");
         _acao = 3;
       }
@@ -262,7 +261,6 @@ class _AceleroPage extends State<AceleroPage> {
     //});
     //condição para a calibragem da extrema direita
     if (extremo == 0) {
-
       //variavel de controle do num. de vezes da execução da função timer
       int numVezes = 1;
       //Função que executa a a cada 1 segundo
@@ -330,28 +328,28 @@ class _AceleroPage extends State<AceleroPage> {
     }
   }
 
-  void movimentoAvatarAcelerometro(){
-        accelerometerEvents.listen((AccelerometerEvent event) {
-          setState(() {
-            var valorAceleracaoAtual = int.parse((event.x).toStringAsFixed(0));
-            if(valorAceleracaoAtual == _calibragemDir){
-              // print("DIREITA");
-              // print("Aceleração = $valorAceleracaoAtual");
-              // print("-----------------");
-              _sendMessage("D");
-            }else if(valorAceleracaoAtual == _calibragemEsq){
-              // print("ESQUERDA");
-              // print("Aceleração = $valorAceleracaoAtual");
-              // print("-----------------");
-              _sendMessage("E");
-            }else{
-              // print("PARADO");
-              // print("Aceleração = $valorAceleracaoAtual");
-              // print("-----------------");
-              _sendMessage("P");
-            }
-            //usando valores pre-configurados
-            /*if(valorAceleracaoAtual == 0){
+  void movimentoAvatarAcelerometro() {
+    accelerometerEvents.listen((AccelerometerEvent event) {
+      setState(() {
+        var valorAceleracaoAtual = int.parse((event.x).toStringAsFixed(0));
+        if (valorAceleracaoAtual == _calibragemDir) {
+          // print("DIREITA");
+          // print("Aceleração = $valorAceleracaoAtual");
+          // print("-----------------");
+          _sendMessage("D");
+        } else if (valorAceleracaoAtual == _calibragemEsq) {
+          // print("ESQUERDA");
+          // print("Aceleração = $valorAceleracaoAtual");
+          // print("-----------------");
+          _sendMessage("E");
+        } else {
+          // print("PARADO");
+          // print("Aceleração = $valorAceleracaoAtual");
+          // print("-----------------");
+          _sendMessage("P");
+        }
+        //usando valores pre-configurados
+        /*if(valorAceleracaoAtual == 0){
               print("PARADO");
               print(valorAceleracaoAtual);
               print("-----------------");
@@ -364,8 +362,8 @@ class _AceleroPage extends State<AceleroPage> {
               print(valorAceleracaoAtual);
               print("-----------------");
             }*/
-            //Usando intervalo entre valores de calibragem e maior/menor que 1/-1
-            /*if(valorAcelerecaoAtual > 1 && valorAcelerecaoAtual <= _calibragemDir){
+        //Usando intervalo entre valores de calibragem e maior/menor que 1/-1
+        /*if(valorAcelerecaoAtual > 1 && valorAcelerecaoAtual <= _calibragemDir){
               _sendMessage("DIREITA");
               _direcao = "D";
               //print("D");
@@ -378,8 +376,8 @@ class _AceleroPage extends State<AceleroPage> {
               _direcao = "P";
               //print("P");
             } */
-          });
-        });
+      });
+    });
   }
 
   void calibragemGiroscopio(int extremo) async {
@@ -393,10 +391,9 @@ class _AceleroPage extends State<AceleroPage> {
     //await Future.delayed(const Duration(seconds: 15), () {
     //  print("Delay da calibragem executado!");
     //});
-    
+
     // //condição para a calibragem da extrema direita
     if (extremo == 0) {
-
       //variavel de controle do num. de vezes da execução da função timer
       int numVezes = 1;
       //cria variavel do tipo stream para controle do listen
@@ -411,32 +408,34 @@ class _AceleroPage extends State<AceleroPage> {
             if (giro == 0) {
               //print("Zero!");
             } else if (giro < valorDireitaMax) {
-                  valorDireitaMax = giro;
-                  // print("Valor máximo da direita é: $valorDireitaMax");
-                  //print(acel);
-                  _sendMessage("A");
-                  _calibragemDir = valorDireitaMax;
-                } else if (giro.abs() < valorDireitaMax) {
-                  //print(valorDireitaMax); 
-                }
-                //_calibragemDir = valorDireitaMax.toString();
-                  // // Cancela função aos 7 segundos
-                if (numVezes == 7) {
-                  print("Tempo finalizado!");
-                  // print(DateTime.now().second);
-                  numVezes = 1; //reinicializa numero de vezes
-                    if(_calibragemDir == 0 || _calibragemDir == null){ //necessário repetir calibragem
-                      _sendMessage("9");
-                      timer.cancel(); //cancela funçao de timer
-                      giroscopio.pause(); //cancela listen do giroscópio
-                    }else{//calibragem ok
-                      _sendMessage("7"); //envia msg de conclusão da calibragem
-                      timer.cancel(); //cancela funçao de timer
-                      giroscopio.pause(); //cancela listen do giroscópio
-                    }
-                }
+              valorDireitaMax = giro;
+              // print("Valor máximo da direita é: $valorDireitaMax");
+              //print(acel);
+              _sendMessage("A");
+              _calibragemDir = valorDireitaMax;
+            } else if (giro.abs() < valorDireitaMax) {
+              //print(valorDireitaMax);
+            }
+            //_calibragemDir = valorDireitaMax.toString();
+            // // Cancela função aos 7 segundos
+            if (numVezes == 7) {
+              print("Tempo finalizado!");
+              // print(DateTime.now().second);
+              numVezes = 1; //reinicializa numero de vezes
+              if (_calibragemDir == 0 || _calibragemDir == null) {
+                //necessário repetir calibragem
+                _sendMessage("9");
+                timer.cancel(); //cancela funçao de timer
+                giroscopio.pause(); //cancela listen do giroscópio
+              } else {
+                //calibragem ok
+                _sendMessage("7"); //envia msg de conclusão da calibragem
+                timer.cancel(); //cancela funçao de timer
+                giroscopio.pause(); //cancela listen do giroscópio
+              }
+            }
           });
-        }); 
+        });
         numVezes++;
       });
     } else if (extremo == 1) {
@@ -469,11 +468,12 @@ class _AceleroPage extends State<AceleroPage> {
             if (numVezes == 7) {
               print("Tempo finalizado");
               numVezes = 1; //reinicializa numero de vezes
-              if(_calibragemEsq == 0 || _calibragemEsq == null){ //necessário repetir calibragem
+              if (_calibragemEsq == 0 || _calibragemEsq == null) {
+                //necessário repetir calibragem
                 _sendMessage("9");
                 timer.cancel(); //cancela funçao de timer
                 giroscopio.pause();
-              }else{
+              } else {
                 _sendMessage("7"); //envia msg de conclusão da calibragem
                 timer.cancel(); //cancela funçao de timer
                 giroscopio.pause(); //cancela listen dLineo giroscópio
@@ -488,7 +488,7 @@ class _AceleroPage extends State<AceleroPage> {
     }
   }
 
-  void movimentoAvatarGiroscopio(){
+  void movimentoAvatarGiroscopio() {
     var giroscopioMove;
     giroscopioMove = gyroscopeEvents.listen((GyroscopeEvent event) {
       // print(int.parse((event.z).toStringAsFixed(0)));
@@ -496,53 +496,55 @@ class _AceleroPage extends State<AceleroPage> {
       // int valorGiroscopioAtual = int.parse((event.z).toStringAsFixed(1));
       double valorGiroscopioAtual = double.parse((event.z).toStringAsFixed(1));
       // setState(() {
-        if(valorGiroscopioAtual > 0.2 && valorGiroscopioAtual <= _calibragemEsq){
+      if (valorGiroscopioAtual > 0.2 &&
+          valorGiroscopioAtual <= _calibragemEsq) {
         // if(valorGiroscopioAtual >= 1 && valorGiroscopioAtual <= 8){
-          double posicao = _feEsq * valorGiroscopioAtual;
-          // double posicao = (-1.3) * valorGiroscopioAtual;
-          posicao = posicao.abs();
-          String movimento = "E" + ";" +  posicao.toStringAsFixed(1);
-          _sendMessage(movimento);
-          // _sendMessage("E");
-          _direcao = "E";
-          print(valorGiroscopioAtual);
-          print(movimento);
-          print("------------------------------------");
+        double posicao = _feEsq * valorGiroscopioAtual;
+        // double posicao = (-1.3) * valorGiroscopioAtual;
+        posicao = posicao.abs();
+        String movimento = "E" + ";" + posicao.toStringAsFixed(1);
+        _sendMessage(movimento);
+        // _sendMessage("E");
+        _direcao = "E";
+        print(valorGiroscopioAtual);
+        print(movimento);
+        print("------------------------------------");
         // }else if(valorGiroscopioAtual >= (-8) && valorGiroscopioAtual <= (-1)){
-        }else if(valorGiroscopioAtual >= _calibragemDir && valorGiroscopioAtual < (-0.2)){
-          double posicao = _feDir * valorGiroscopioAtual;
-          // double posicao = (1.3) * valorGiroscopioAtual;
-          posicao = posicao.abs();
-          String movimento = "D" + ";" +  posicao.toStringAsFixed(1);
-          _sendMessage(movimento);
+      } else if (valorGiroscopioAtual >= _calibragemDir &&
+          valorGiroscopioAtual < (-0.2)) {
+        double posicao = _feDir * valorGiroscopioAtual;
+        // double posicao = (1.3) * valorGiroscopioAtual;
+        posicao = posicao.abs();
+        String movimento = "D" + ";" + posicao.toStringAsFixed(1);
+        _sendMessage(movimento);
         // _sendMessage("D");
-          _direcao = "D";
-          print(valorGiroscopioAtual);
-          print(movimento);
-          print("------------------------------------");
-        }else if(valorGiroscopioAtual >= (-0.2) && valorGiroscopioAtual <= 0.2){
-          // _sendMessage("P;");
-          _sendMessage("P;");
-          _direcao = "P";
-          print("P");
-          print("------------------------------------");
-        }
-        giroscopioMove.cancel();
+        _direcao = "D";
+        print(valorGiroscopioAtual);
+        print(movimento);
+        print("------------------------------------");
+      } else if (valorGiroscopioAtual >= (-0.2) &&
+          valorGiroscopioAtual <= 0.2) {
+        // _sendMessage("P;");
+        _sendMessage("P;");
+        _direcao = "P";
+        print("P");
+        print("------------------------------------");
+      }
+      giroscopioMove.cancel();
       // });
     });
   }
 
-  void calculaFatorEscala(){
+  void calculaFatorEscala() {
     //Esses valores de extrema direita e extrema esquerda são valores já conhecidos da Unity
     int extDir = 8; //extrema direita da mesa
     int extEsq = -8; //estrema esquerda da mesa
-    
+
     _feDir = extDir / _calibragemDir.abs();
     _feDir = double.parse((_feDir).toStringAsFixed(1));
     _feEsq = extEsq / _calibragemEsq.abs();
     _feEsq = double.parse((_feEsq).toStringAsFixed(1));
-    print("Fatores de escala calculados com sucesso! CAL_ESQ = $_calibragemEsq  FE_ESQ = $_feEsq CAL_DIR = $_calibragemDir FE_DIR = $_feDir");
-    
+    print(
+        "Fatores de escala calculados com sucesso! CAL_ESQ = $_calibragemEsq  FE_ESQ = $_feEsq CAL_DIR = $_calibragemDir FE_DIR = $_feDir");
   }
-
 }

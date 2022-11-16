@@ -17,7 +17,7 @@ class BluetoothDeviceListEntry extends StatelessWidget {
       trailing: ElevatedButton(
         child: Text('CONECTAR'),
         onPressed: onTap,
-        style: ElevatedButton.styleFrom(primary: Color(0xFF4D7DB4)),
+        style: ElevatedButton.styleFrom(backgroundColor: Color(0xFF4D7DB4)),
       ),
     );
   }

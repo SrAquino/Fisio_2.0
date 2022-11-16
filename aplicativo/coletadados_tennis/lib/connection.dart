@@ -19,7 +19,6 @@ class SelectBondedDevicePage extends StatefulWidget {
 }
 
 enum _DeviceAvailability {
-  no,
   maybe,
   yes,
 }
@@ -33,7 +32,7 @@ class _DeviceWithAvailability extends BluetoothDevice {
 }
 
 class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
-  List<_DeviceWithAvailability> devices = List<_DeviceWithAvailability>();
+  List<_DeviceWithAvailability> devices = [];
 
   // Disponibilidade
   StreamSubscription<BluetoothDiscoveryResult> _discoveryStreamSubscription;
@@ -70,13 +69,13 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
     });
   }
 
-  void _restartDiscovery() {
+  /*void _restartDiscovery() {
     setState(() {
       _isDiscovering = true;
     });
 
     _startDiscovery();
-  }
+  }*/
 
   void _startDiscovery() {
     print("Início da descoberta de dispositivos!");
